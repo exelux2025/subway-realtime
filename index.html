@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tunnel Dash</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <main class="stage">
+        <div id="game-root"></div>
+      </main>
+
+      <aside class="panel">
+        <header class="panel-header">
+          <h1>Tunnel Dash</h1>
+          <p class="tagline">Move left, right, jump, or sit. The runner follows you.</p>
+        </header>
+
+        <div class="camera-wrap">
+          <video id="webcam" playsinline muted autoplay></video>
+          <canvas id="skeleton"></canvas>
+          <div id="intent" class="intent" data-state="idle"></div>
+          <div id="camera-status" class="camera-status">Press Start to turn on the camera</div>
+        </div>
+
+        <dl class="stats" id="stats">
+          <div>
+            <dt>Score</dt>
+            <dd id="stat-score">0</dd>
+          </div>
+          <div>
+            <dt>Gesture</dt>
+            <dd id="stat-gesture">—</dd>
+          </div>
+          <div>
+            <dt>Lane</dt>
+            <dd id="stat-lane">center</dd>
+          </div>
+          <div>
+            <dt>Pose</dt>
+            <dd id="stat-pose">waiting</dd>
+          </div>
+        </dl>
+
+        <pre id="debug" class="debug"></pre>
+
+        <div class="actions session">
+          <button id="btn-start" type="button">Start</button>
+          <button id="btn-pause" type="button" disabled>Pause</button>
+          <button id="btn-end" type="button" disabled>End</button>
+        </div>
+        <button id="btn-calibrate" type="button" disabled>Calibrate stance</button>
+
+        <p class="hint">
+          Start turns the camera on and begins a run. Pause and End both stop
+          the camera. Lean left/right, hop, or squat once tracking is locked.
+        </p>
+      </aside>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

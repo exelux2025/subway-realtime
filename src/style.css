@@ -1,0 +1,218 @@
+:root {
+  color-scheme: dark;
+  --bg: #0e1116;
+  --panel: #171b22;
+  --stroke: #2a3140;
+  --text: #e8edf5;
+  --muted: #9aa6b8;
+  --accent: #4cc3ff;
+  --warn: #e6b800;
+  --danger: #e0584a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+#app {
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) 360px;
+}
+
+.stage {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+#game-root {
+  width: min(42vh, 420px);
+  height: min(72vh, 720px);
+  background: #12151c;
+  border: 1px solid var(--stroke);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: var(--panel);
+  border-left: 1px solid var(--stroke);
+}
+
+.panel-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.camera-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #0a0c10;
+  border: 1px solid var(--stroke);
+  overflow: hidden;
+}
+
+#webcam,
+#skeleton {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#webcam {
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.camera-status {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  padding: 4px 8px;
+  background: rgba(14, 17, 22, 0.82);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.intent {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 42px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  pointer-events: none;
+  text-shadow: none;
+}
+
+.intent[data-state="idle"],
+.intent[data-state="ready"],
+.intent[data-state="waiting"] {
+  color: transparent;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  margin: 0;
+}
+
+.stats div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.stats dt {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.stats dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.debug {
+  margin: 0;
+  min-height: 4.8em;
+  padding: 10px;
+  background: #0a0c10;
+  color: var(--muted);
+  font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  overflow: hidden;
+}
+
+.actions {
+  display: grid;
+  gap: 8px;
+}
+
+.actions.session {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+button {
+  appearance: none;
+  border: 1px solid var(--stroke);
+  background: #202632;
+  color: var(--text);
+  padding: 10px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+#btn-start {
+  border-color: var(--accent);
+}
+
+#btn-end {
+  border-color: var(--danger);
+}
+
+#btn-calibrate {
+  width: 100%;
+}
+
+.hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+@media (max-width: 860px) {
+  #app {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    border-left: none;
+    border-top: 1px solid var(--stroke);
+  }
+
+  #game-root {
+    width: min(92vw, 420px);
+    height: min(160vw, 720px);
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "subway-realtime",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "postinstall": "mkdir -p public/mediapipe && rm -rf public/mediapipe/wasm && cp -R node_modules/@mediapipe/tasks-vision/wasm public/mediapipe/wasm"
+  },
+  "dependencies": {
+    "@mediapipe/tasks-vision": "^0.10.21",
+    "phaser": "^3.87.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "vite": "^6.2.2"
+  }
+}
